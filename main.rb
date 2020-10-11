@@ -11,3 +11,13 @@ bot.command :pin do |event, *text|
   users[event.user].push(*text.join(' '))
   event.respond "\"#{text.join(' ')}\" has been pinned!"
 end
+
+bot.command :read do |event|
+  users[event.user]
+end
+
+bot.command :remove do |event, index|
+  users[event.user].delete_at(index.to_i)
+end
+
+bot.run
